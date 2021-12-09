@@ -1,0 +1,13 @@
+#!/usr/bin/env php
+<?php declare(strict_types=1);
+
+require_once 'vendor/autoload.php';
+
+$startTime = microtime(true);
+
+$puzzle = $argv[1];
+$path = str_pad(substr($puzzle, 0, -1), 2, '0', STR_PAD_LEFT);
+
+require_once "$path/$puzzle.php";
+
+echo "\n\nExecution time: " . microtime(true) - $startTime . "\n";

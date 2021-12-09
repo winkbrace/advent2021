@@ -1,0 +1,17 @@
+{
+    "name": "winkbrace/advent2021",
+    "type": "project",
+    "require": {
+        "illuminate/collections": "^8.75"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-latest",
+        "phpunit/phpunit": "^9.5",
+        "symfony/var-dumper": "^6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Advent\\": "src/"
+        }
+    }
+}
