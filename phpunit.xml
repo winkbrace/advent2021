@@ -4,15 +4,9 @@
     xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
     colors="true"
 >
-  <coverage>
-    <include>
-      <directory>src</directory>
-    </include>
-  </coverage>
-
   <testsuites>
     <testsuite name="unit">
-      <directory>tests</directory>
+      <directory>php</directory>
     </testsuite>
   </testsuites>
 

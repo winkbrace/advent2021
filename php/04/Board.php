@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Advent\Bingo;
+require_once 'Cell.php';
 
 final class Board
 {

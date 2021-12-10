@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-use Advent\Bingo\Board;
+require_once 'Board.php';
 
 $input = array_filter(file(__DIR__ . '/input.txt'), fn ($line) => trim($line) !== '');
 $draws = explode(',', trim(array_shift($input)));

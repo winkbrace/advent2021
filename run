@@ -8,6 +8,6 @@ $startTime = microtime(true);
 $puzzle = $argv[1];
 $path = str_pad(substr($puzzle, 0, -1), 2, '0', STR_PAD_LEFT);
 
-require_once "$path/$puzzle.php";
+require_once "php/$path/$puzzle.php";
 
 echo "\n\nExecution time: " . microtime(true) - $startTime . "\n";

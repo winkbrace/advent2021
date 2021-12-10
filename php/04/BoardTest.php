@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
 
-use Advent\Bingo\Board;
+require_once 'Board.php';
+
 use PHPUnit\Framework\TestCase;
 
 class BoardTest extends TestCase
