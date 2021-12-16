@@ -2,13 +2,12 @@
 
 final class Cave
 {
-    public bool $isBig;
-    public bool $isVisited = false;
+    public bool $isSmall;
     public array $connections;
 
     public function __construct(public string $id)
     {
-        $this->isBig = $id === strtoupper($id);
+        $this->isSmall = $id === strtolower($id);
     }
 
     public function connects(Cave $cave): void

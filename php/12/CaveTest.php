@@ -6,12 +6,12 @@ use PHPUnit\Framework\TestCase;
 
 class CaveTest extends TestCase
 {
-    public function test_is_big() : void
+    public function test_is_small() : void
     {
         $cave = new Cave('xx');
-        self::assertFalse($cave->isBig);
+        self::assertTrue($cave->isSmall);
 
         $cave = new Cave('XX');
-        self::assertTrue($cave->isBig);
+        self::assertFalse($cave->isSmall);
     }
 }

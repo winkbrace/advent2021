@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
 
-require_once 'PathFinder.php';
+require_once 'SingleVisitPathFinder.php';
+require_once 'DoubleVisitPathFinder.php';
 
 use PHPUnit\Framework\TestCase;
 
@@ -12,7 +13,7 @@ class PathFinderTest extends TestCase
     {
         parent::setUp();
 
-        $this->pathFinder = new PathFinder(file(__DIR__ . '/example1.txt'));
+        $this->pathFinder = new SingleVisitPathFinder(file(__DIR__ . '/example1.txt'));
     }
 
     /** @test */
@@ -30,4 +31,53 @@ class PathFinderTest extends TestCase
         self::assertSame('A', $connections[0]->id);
         self::assertSame('b', $connections[1]->id);
     }
+
+    public function test_it_finds_paths_of_example1(): void
+    {
+        $paths = $this->pathFinder->findPaths();
+        // echo $this->pathFinder->pathsToString();
+
+        self::assertCount(10, $paths);
+    }
+
+    public function test_it_finds_paths_of_example2(): void
+    {
+        $pathFinder = new SingleVisitPathFinder(file(__DIR__ . '/example2.txt'));
+        $paths = $pathFinder->findPaths();
+
+        self::assertCount(19, $paths);
+    }
+
+    public function test_it_finds_paths_of_example3(): void
+    {
+        $pathFinder = new SingleVisitPathFinder(file(__DIR__ . '/example3.txt'));
+        $paths = $pathFinder->findPaths();
+
+        self::assertCount(226, $paths);
+    }
+
+    public function test_it_finds_double_visit_paths_of_example1(): void
+    {
+        $pathFinder = new DoubleVisitPathFinder(file(__DIR__ . '/example1.txt'));
+        $paths = $pathFinder->findPaths();
+
+        self::assertCount(36, $paths);
+    }
+
+// Slow tests
+//    public function test_it_finds_double_visit_paths_of_example2(): void
+//    {
+//        $pathFinder = new DoubleVisitPathFinder(file(__DIR__ . '/example2.txt'));
+//        $paths = $pathFinder->findPaths();
+//
+//        self::assertCount(103, $paths);
+//    }
+//
+//    public function test_it_finds_double_visit_paths_of_example3(): void
+//    {
+//        $pathFinder = new DoubleVisitPathFinder(file(__DIR__ . '/example3.txt'));
+//        $paths = $pathFinder->findPaths();
+//
+//        self::assertCount(3509, $paths);
+//    }
 }
