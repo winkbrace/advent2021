@@ -9,9 +9,7 @@
 require_once 'ChitonAvoider.php';
 
 $pathFinder = new ChitonAvoider(file(__DIR__ . '/input.txt'));
-$path = $pathFinder->findOptimalPath();
-dump($path);
-$score = $pathFinder->score($path);
+$end = $pathFinder->findOptimalPath();
 
 // Less than 371
-echo "\nThe total risk of the optimal path is: $score.\n";
+echo "\nThe total risk of the optimal path is: $end->score.\n";
