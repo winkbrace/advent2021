@@ -47,8 +47,6 @@ final class ChitonAvoider
     {
         // calculate the score from current cell to the next 2
         foreach ($this->getNext($cell) as $next) {
-            if ($next->explored) continue;
-
             $score = $cell->score + $next->value;
             if ($score < $next->score) {
                 $next->score = $score;
@@ -65,14 +63,12 @@ final class ChitonAvoider
     /** @return Cell[] */
     private function getNext(Cell $cell): array
     {
-        $next = [];
-        if ($cell->r + 1 <= $this->max) {
-            $next[] = $this->grid[$cell->r + 1][$cell->c];
-        }
-        if ($cell->c + 1 <= $this->max) {
-            $next[] = $this->grid[$cell->r][$cell->c + 1];
-        }
-        return $next;
+        return array_filter([
+            $this->grid[$cell->r - 1][$cell->c] ?? null,
+            $this->grid[$cell->r + 1][$cell->c] ?? null,
+            $this->grid[$cell->r][$cell->c - 1] ?? null,
+            $this->grid[$cell->r][$cell->c + 1] ?? null,
+        ], fn(?Cell $cell) => $cell !== null && ! $cell->explored);
     }
 
     private function cellWithLowestScore(): Cell

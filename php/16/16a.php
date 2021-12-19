@@ -3,7 +3,6 @@
 require_once 'BitsParser.php';
 
 $parser = new BitsParser(file_get_contents(__DIR__ . '/input.txt'));
-dump($parser->packets);
 $sum = $parser->versionSum();
 
 // More than 835
