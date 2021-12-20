@@ -88,7 +88,6 @@ class ProbePositionerTest extends TestCase
         $area = new Area(20,30,-10,-5);
 
         self::assertFalse($positioner->hitsTargetArea($area));
-        // next x would be > 30
-        self::assertSame(17, $positioner->position->x);
+        self::assertSame(33, $positioner->position->x);
     }
 }
